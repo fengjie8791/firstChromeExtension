@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Grayscale Mode",
+  "name": "VisionAssist",
   "version": "1.0",
   "description": "Turn any webpage black & white with one click.",
-  "permissions": ["scripting"],
+  "permissions": ["scripting", "storage", "tabs"],
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html"

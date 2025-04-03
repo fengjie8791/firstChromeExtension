@@ -1,16 +1,62 @@
-let isGrayscale = false;
+// let isGrayscale = false;
+//add
+const style = document.createElement('style');
+style.innerHTML = `
+  .text-zoom { 
+    transition: transform 0.5s ease-in-out;
+  }
+  .text-zoom:hover { 
+    transform: scale(1.3);
+  }
+  .big-mouse {
+    cursor: none; 
+  }
 
-function toggleGrayscale() {
-  isGrayscale = !isGrayscale;
-  document.documentElement.style.filter = isGrayscale
-    ? 'grayscale(100%)'
-    : 'none';
-}
+  .big-mouse::after {
+    content: "";
+    width: 20px; 
+    height: 20px;
+    background: black; 
+    position: absolute;
+    border-radius: 50%; 
+    pointer-events: none; 
+    transform: translate(-50%, -50%) scale(1); 
+    transition: transform 0.1s ease-out;
+  }
+  `;
+document.head.appendChild(style);
 
 // Listen for messages from popup.js
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === 'toggleGrayscale') {
-    toggleGrayscale();
+    if (message.isGrayOn) {
+      document.documentElement.style.filter = 'grayscale(100%)';
+    } else {
+      document.documentElement.style.filter = 'none';
+    }
+  } else if (message.type === 'toggleFontIncrease') {
+    console.log('font increase', message.isFontOn);
+    if (message.isFontOn) {
+      document
+        .querySelectorAll(
+          'p, span, h1, h2, h3, h4, h5, h6, a, label, img, button'
+        )
+        .forEach((el) => {
+          el.style.cursor = 'zoom-in';
+          el.classList.add('text-zoom');
+        });
+      // document.body.classList.add('big-mouse');
+    } else {
+      document
+        .querySelectorAll(
+          'p, span, h1, h2, h3, h4, h5, h6, a, label, img, button'
+        )
+        .forEach((el) => {
+          el.style.cursor = 'zoom-in';
+          el.classList.remove('text-zoom');
+        });
+      // document.body.classList.remove('big-mouse');
+    }
   }
 });
 console.log('Checking if content.js is running');
