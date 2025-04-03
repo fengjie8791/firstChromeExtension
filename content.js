@@ -8,21 +8,7 @@ style.innerHTML = `
   .text-zoom:hover { 
     transform: scale(1.3);
   }
-  .big-mouse {
-    cursor: none; 
-  }
 
-  .big-mouse::after {
-    content: "";
-    width: 20px; 
-    height: 20px;
-    background: black; 
-    position: absolute;
-    border-radius: 50%; 
-    pointer-events: none; 
-    transform: translate(-50%, -50%) scale(1); 
-    transition: transform 0.1s ease-out;
-  }
   `;
 document.head.appendChild(style);
 

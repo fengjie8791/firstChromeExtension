@@ -32,15 +32,8 @@ h2 {
   transform: scale(1.2);
   transition: transform 0.2s ease-in-out;
 }
-/* button:hover {
-  transform: scale(2);
-  transition: transform 0.2s ease-in-out;
-} */
-
-/* button:hover {
-  background: gray;
-} */
-/* 开关外部容器 */
+/* switch box */
+/* Toggle switch outer container */
 .switch {
   position: relative;
   display: inline-block;
@@ -48,14 +41,14 @@ h2 {
   height: 28px;
 }
 
-/* 隐藏原始 checkbox */
+/* Hide the original checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* 滑块样式 */
+/* Slider style */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -68,7 +61,7 @@ h2 {
   transition: 0.4s;
 }
 
-/* 圆点（滑动的小球） */
+/* Small circle (sliding knob) */
 .slider::before {
   position: absolute;
   content: '';
@@ -81,12 +74,12 @@ h2 {
   transition: 0.4s;
 }
 
-/* 选中状态（开） */
+/* Checked state (ON) */
 input:checked + .slider {
   background-color: #4caf50;
 }
 
-/* 选中状态时，圆点移动到右侧 */
+/* Move the knob to the right when checked */
 input:checked + .slider::before {
   transform: translateX(22px);
 }
